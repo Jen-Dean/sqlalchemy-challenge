@@ -52,14 +52,19 @@ def precipitation():
 
 @app.route("/api/v1.0/stations")
 def stations():
+    station_list = session.query(Station.station).all()
     return (
-        "hello"
+        jsonify(station_list)
     )
 
 @app.route("/api/v1.0/tobs")
 def tobs():
+    previous_date = dt.datetime(2016, 8, 23)
+    tobs = session.query(Measurement.tobs).\
+        filter(Measurement.station == 'USC00519281').\
+        filter(Measurement.date > previous_date).all()
     return (
-        "hello"
+        jsonify(tobs)
     )
 
 @app.route("/api/v1.0/<start>")
