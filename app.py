@@ -68,9 +68,19 @@ def tobs():
     )
 
 @app.route("/api/v1.0/<start>")
-def start():
+def start_date_only(start):
+    date = start.datetime(start)
+    min_tobs = session.query(func.min(Measurement.tobs)).\
+        filter(Measurement.date <= date).all()
+    avg_tobs = session.query(func.avg(Measurement.tobs)).\
+        filter(Measurement.date <= date).all()
+    max_tobs = session.query(func.max(Measurement.tobs)).\
+        filter(Measurement.date <= date).all()
+
     return (
-        "hello"
+        f"The Minimum Tempurature on {date} was {min_tobs}</br>"
+        f"The Average Tempurature on {date} was {avg_tobs}</br>"
+        f"The Maximum Tempurature on {date} was {max_tobs}</br>"
     )
 
 @app.route("/api/v1.0/<start>/<end>")
