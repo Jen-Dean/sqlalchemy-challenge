@@ -84,6 +84,7 @@ def tobs():
 
 @app.route("/api/v1.0/<start>")
 def start_date_only(start):
+    
     date = start
 
     session = Session(engine)
@@ -97,16 +98,20 @@ def start_date_only(start):
 
     session.close()
 
-    return (
+    test = jsonify(min_tobs[0][0])
 
-        jsonify({
-        "min_tob": min_tobs,
-        "avg_tob": avg_tobs,
-        "max_tob": max_tobs})
-
-        #f"The Minimum Tempurature on {date} was {min_tobs[0]}</br>"
-        #f"The Average Tempurature on {date} was {avg_tobs[0]}</br>"
-        #f"The Maximum Tempurature on {date} was {max_tobs[0]}</br>"
+    if test == "null":
+        return (jsonify({"error": "Please input the format in YYYY-MM-DD."}), 404)
+    else:
+        return (
+            #jsonify(min_tobs[0][0])
+            jsonify({
+            "min_tob": min_tobs,
+            "avg_tob": avg_tobs,
+            "max_tob": max_tobs})
+            #f"The Minimum Tempurature on {date} was {min_tobs[0]}</br>"
+            #f"The Average Tempurature on {date} was {avg_tobs[0]}</br>"
+            #f"The Maximum Tempurature on {date} was {max_tobs[0]}</br>"
     )
 
 @app.route("/api/v1.0/<start>/<end>")
@@ -128,18 +133,21 @@ def end(start, end):
 
     session.close()
 
-    return (
-        jsonify({
-        "min_tob": min_tobs,
-        "avg_tob": avg_tobs,
-        "max_tob": max_tobs})
+    test = jsonify(min_tobs[0][0])
 
-        #f"The Minimum Tempurature between {date_s} and {date_e} was {min_tobs[0]}</br>"
-        #f"The Average Tempurature between {date_s} and {date_e} was {avg_tobs[0]}</br>"
-        #f"The Maximum Tempurature between {date_s} and {date_e} was {max_tobs[0]}</br>"
+    if test == "null":
+        return (jsonify({"error": "Please input the format in YYYY-MM-DD."}), 404)
+    else:
+        return (
+            jsonify({
+            "min_tob": min_tobs,
+            "avg_tob": avg_tobs,
+            "max_tob": max_tobs})
+
+            #f"The Minimum Tempurature between {date_s} and {date_e} was {min_tobs[0]}</br>"
+            #f"The Average Tempurature between {date_s} and {date_e} was {avg_tobs[0]}</br>"
+            #f"The Maximum Tempurature between {date_s} and {date_e} was {max_tobs[0]}</br>"
     )
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
