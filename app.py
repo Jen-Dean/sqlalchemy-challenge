@@ -98,9 +98,9 @@ def start_date_only(start):
 
     session.close()
 
-    test = jsonify(min_tobs[0][0])
+    test = min_tobs[0][0]
 
-    if test == "null":
+    if test is None:
         return (jsonify({"error": "Please input the format in YYYY-MM-DD."}), 404)
     else:
         return (
@@ -133,9 +133,9 @@ def end(start, end):
 
     session.close()
 
-    test = jsonify(min_tobs[0][0])
+    test = min_tobs[0][0]
 
-    if test == "null":
+    if test is None:
         return (jsonify({"error": "Please input the format in YYYY-MM-DD."}), 404)
     else:
         return (
