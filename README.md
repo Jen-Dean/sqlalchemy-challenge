@@ -4,9 +4,9 @@
 > I will use SQL, SQLAlchemy, Python, Matplotlib, ORM queries, Pandas, and others to gather and read the data analysis.
 
 ## Table of contents
-* [Final Results](#Final Results)
+* [Final Results](#FinalResults)
 * [Technologies](#technologies)
-* [Final Coding Files](#Final Coding Files)
+* [Final Coding Files](#FinalCodingFiles)
 
 ## Final Results
 
