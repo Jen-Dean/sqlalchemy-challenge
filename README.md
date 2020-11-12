@@ -22,6 +22,10 @@
 
 ![Example screenshot](https://github.com/Jen-Dean/sqlalchemy-challenge/blob/main/Final%20Images/precipitation.png)
 
+#### Temperature History
+
+![Example screenshot](https://github.com/Jen-Dean/sqlalchemy-challenge/blob/main/Final%20Images/bonus_temp_chart.png)
+
 ## Final Coding Files
 
 * [Jupyter Notebook](https://github.com/Jen-Dean/sqlalchemy-challenge/blob/main/climate_finished_bonus.ipynb)
